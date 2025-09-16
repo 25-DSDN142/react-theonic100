@@ -15,26 +15,55 @@ function drawInteraction(faces, hands) {
     }
 
     // This is how to load in the x and y of a point on the hand.
+let thumbTipX = hand.thumb_tip.x;
+let thumbTipY = hand.thumb_tip.y;
+
     let indexFingerTipX = hand.index_finger_tip.x;
     let indexFingerTipY = hand.index_finger_tip.y;
 
-    //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
-    //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
+    let middleFingerTipX = hand.middle_finger_tip.x;
+let middleFingerTipY = hand.middle_finger_tip.y;
+
+let ringFingerTipX = hand.ring_finger_tip.x;
+let ringFingerTipY = hand.ring_finger_tip.y;
+
+let pinkyFingerTipX = hand.pinky_finger_tip.x;
+let pinkyFingerTipY = hand.pinky_finger_tip.y;
+
+
 
     /*
     Start drawing on the hands here
     */
 
-    fill(225, 225, 0);
-    ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
+    // fill(204, 0, 255);
+    // ellipse(thumbTipX, thumbTipY, 30, 30);
+    // ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
+    // ellipse(middleFingerTipX, middleFingerTipY, 30, 30);
+    // ellipse(ringFingerTipX, ringFingerTipY, 30, 30);
+    // ellipse(pinkyFingerTipX, pinkyFingerTipY, 30, 30);
+       
 
-    // drawPoints(hand)
+
+    //drawPoints(hand)
 
     //fingerPuppet(indexFingerTipX, indexFingerTipY);
 
-    //chameleonHandPuppet(hand)
-
-    /*
+    // chameleonHandPuppet(hand)
+    noStroke()
+ fill(204, 0, 255);
+   // ellipse(thumbTipX, thumbTipY, 30, 30);  
+    ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
+     fill(204, 0, 255,90);
+    ellipse(indexFingerTipX, indexFingerTipY, 50, 50);
+     fill(204, 0, 255,80);
+     ellipse(indexFingerTipX, indexFingerTipY, 60, 60);
+      fill(204, 0, 255,70);
+      ellipse(indexFingerTipX, indexFingerTipY, 70, 70);
+    // ellipse(middleFingerTipX, middleFingerTipY, 30, 30);
+    // ellipse(ringFingerTipX, ringFingerTipY, 30, 30);
+    // ellipse(pinkyFingerTipX, pinkyFingerTipY, 30, 30);
+     /*
     Stop drawing on the hands here
     */
   }
