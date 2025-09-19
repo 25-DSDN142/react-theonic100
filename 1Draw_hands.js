@@ -36,33 +36,32 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
     Start drawing on the hands here
     */
 
-    // fill(204, 0, 255);
-    // ellipse(thumbTipX, thumbTipY, 30, 30);
-    // ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
-    // ellipse(middleFingerTipX, middleFingerTipY, 30, 30);
-    // ellipse(ringFingerTipX, ringFingerTipY, 30, 30);
-    // ellipse(pinkyFingerTipX, pinkyFingerTipY, 30, 30);
+;
+noStroke()
+  //  ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
+  //    fill(204, 0, 255,90);
+  //   ellipse(indexFingerTipX, indexFingerTipY, 50, 50);
+  //    fill(204, 0, 255,80);
+  //    ellipse(indexFingerTipX, indexFingerTipY, 60, 60);
+  //     fill(204, 0, 255,70);
+   // ellipse(thumbTipX, thumbTipY, 30, 30);
+    fill(204, 0, 255)
+    ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
+    ellipse(middleFingerTipX, middleFingerTipY, 30, 30);
+    ellipse(ringFingerTipX, ringFingerTipY, 30, 30);
+    ellipse(pinkyFingerTipX, pinkyFingerTipY, 30, 30);
        
 
 
-    //drawPoints(hand)
+  // drawPoints(hand)
+
+  
 
     //fingerPuppet(indexFingerTipX, indexFingerTipY);
 
-    // chameleonHandPuppet(hand)
-    noStroke()
- fill(204, 0, 255);
-   // ellipse(thumbTipX, thumbTipY, 30, 30);  
-    ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
-     fill(204, 0, 255,90);
-    ellipse(indexFingerTipX, indexFingerTipY, 50, 50);
-     fill(204, 0, 255,80);
-     ellipse(indexFingerTipX, indexFingerTipY, 60, 60);
-      fill(204, 0, 255,70);
-      ellipse(indexFingerTipX, indexFingerTipY, 70, 70);
-    // ellipse(middleFingerTipX, middleFingerTipY, 30, 30);
-    // ellipse(ringFingerTipX, ringFingerTipY, 30, 30);
-    // ellipse(pinkyFingerTipX, pinkyFingerTipY, 30, 30);
+   chameleonHandPuppet(hand)
+    
+
      /*
     Stop drawing on the hands here
     */
@@ -121,15 +120,24 @@ function chameleonHandPuppet(hand) {
   let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
 
   // This circle's size is controlled by a "pinch" gesture
-  fill(0, 255, 0, 200);
+  fill(0, 255, 0, 127.5);
   stroke(0);
   strokeWeight(2);
   circle(centerX, centerY, pinch);
+  
 
   let indexFingerTipX = hand.index_finger_tip.x;
   let indexFingerTipY = hand.index_finger_tip.y;
-  fill(0)
-  circle(indexFingerTipX, indexFingerTipY, 20);
+  
+    noStroke()
+     ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
+     fill(204, 0, 255,90);
+    ellipse(indexFingerTipX, indexFingerTipY, 50, 50);
+     fill(204, 0, 255,80);
+     ellipse(indexFingerTipX, indexFingerTipY, 60, 60);
+      fill(204, 0, 255,70);
+      fill(0,0,0)
+   circle(indexFingerTipX, indexFingerTipY, 20);
 
 }
 
