@@ -46,10 +46,12 @@ noStroke()
   //     fill(204, 0, 255,70);
    // ellipse(thumbTipX, thumbTipY, 30, 30);
     fill(204, 0, 255)
-    ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
-    ellipse(middleFingerTipX, middleFingerTipY, 30, 30);
-    ellipse(ringFingerTipX, ringFingerTipY, 30, 30);
-    ellipse(pinkyFingerTipX, pinkyFingerTipY, 30, 30);
+    //ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
+    ellipse(middleFingerTipX, middleFingerTipY, 80, 80);
+    ellipse(ringFingerTipX, ringFingerTipY, 70, 70);
+    ellipse(pinkyFingerTipX, pinkyFingerTipY, 60, 60);
+
+    circle(90,90,50)
        
 
 
