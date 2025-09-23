@@ -61,27 +61,51 @@ function drawInteraction(faces, hands) {
 
     let noseTipX = face.keypoints[4].x;
     let noseTipY = face.keypoints[4].y;
+    
+    let foreHeadX = face.keypoints[10].x;
+    let foreHeadY = face.keypoints[10].y;
+
+    let leftCheckX = face.keypoints[50].x;
+    let leftCheckY = face.keypoints[50].y;
+
+    let rightCheckX = face.keypoints[280].x;
+    let rightCheckY = face.keypoints[280].y;
+
+    let chinX = face.keypoints[200].x;
+    let chinY = face.keypoints[200].y;
+    
     /*
     Start drawing on the face here
     */
-    noStroke()
-    fill(225, 225, 0);
+    //noStroke()
+    fill(50, 171, 82);
     // fill(get(leftEyeCenterX, leftEyeCenterY))
 
-    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight);
+    //ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight);
+    //ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight);
 
-    drawPoints(face.leftEye);
-    drawPoints(face.leftEyebrow);
-    drawPoints(face.lips);
-    drawPoints(face.rightEye);
-    drawPoints(face.rightEyebrow);
+   rect(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight);
+    rect(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight);
+
+    //  drawPoints(face.leftEye);
+    //  drawPoints(face.leftEyebrow);
+    //  drawPoints(face.lips);
+    //  drawPoints(face.rightEye);
+    //  drawPoints(face.rightEyebrow);
 
     // drawX(rightEyeCenterX,rightEyeCenterY);
     // drawX(leftEyeCenterX,leftEyeCenterY);
 
+//  let upperLip = face.keypoints[13];  // upper lip landmark
+// if(upperLip = 13)
 
-    // drawX(noseTipX,noseTipY); 
-
+  stroke(171, 50, 54);
+  drawX(noseTipX, noseTipY); 
+  drawX(foreHeadX, foreHeadY);
+  drawX(leftCheckX, leftCheckY);
+  drawX(rightCheckX, rightCheckY);
+  drawX(chinX, chinY);
+//}
     // drawX(face.keypoints[332].x,face.keypoints[332].y);
     // drawX(face.keypoints[103].x,face.keypoints[103].y);
 

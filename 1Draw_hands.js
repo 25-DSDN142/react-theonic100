@@ -51,6 +51,7 @@ noStroke()
     ellipse(ringFingerTipX, ringFingerTipY, 70, 70);
     ellipse(pinkyFingerTipX, pinkyFingerTipY, 60, 60);
 
+    
     circle(90,90,50)
        
 
