@@ -35,8 +35,9 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
     /*
     Start drawing on the hands here
     */
+   background(0,0,0)
+  planeImage = loadImage('/images/plane.png');
 
-;
 noStroke()
   //  ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
   //    fill(204, 0, 255,90);
@@ -45,25 +46,35 @@ noStroke()
   //    ellipse(indexFingerTipX, indexFingerTipY, 60, 60);
   //     fill(204, 0, 255,70);
    // ellipse(thumbTipX, thumbTipY, 30, 30);
+
+   image(planeImage,50,50,400,300)
     fill(204, 0, 255)
     //ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
     ellipse(middleFingerTipX, middleFingerTipY, 80, 80);
     ellipse(ringFingerTipX, ringFingerTipY, 70, 70);
     ellipse(pinkyFingerTipX, pinkyFingerTipY, 60, 60);
+   
+   //Map for falling images
+   fill(255, 196, 0)
+  let y = map(frameCount, 0, 300, 0, height);
+  circle(90, y, 50); // circle goes from top to bottom
+ 
+    let y1 = map(frameCount,300, 500, 0, height);
 
+  circle(500, y1, 50); // circle goes from top to bottom   
+
+      let x1 = map(frameCount/2,0, 800, 0, height);
+
+  circle(x1, y1, 50); // circle goes from top to bottom 
+
+   chameleonHandPuppet(hand)
     
-    circle(90,90,50)
-       
-
-
   // drawPoints(hand)
 
   
 
     //fingerPuppet(indexFingerTipX, indexFingerTipY);
 
-   chameleonHandPuppet(hand)
-    
 
      /*
     Stop drawing on the hands here
