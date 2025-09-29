@@ -47,7 +47,7 @@ noStroke()
   //     fill(204, 0, 255,70);
    // ellipse(thumbTipX, thumbTipY, 30, 30);
 
-   image(planeImage,50,50,400,300)
+  
     fill(204, 0, 255)
     //ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
     ellipse(middleFingerTipX, middleFingerTipY, 80, 80);
@@ -61,12 +61,22 @@ noStroke()
  
     let y1 = map(frameCount,300, 500, 0, height);
 
-  circle(500, y1, 50); // circle goes from top to bottom   
+circle(500, y1, 50); // circle goes from top to bottom   
 
-      let x1 = map(frameCount/2,0, 800, 0, height);
+      let x1 = map(frameCount,300, 800, 0, height);
+    let y2= map(frameCount,600, 900, 0, height);
 
-  circle(x1, y1, 50); // circle goes from top to bottom 
-
+  circle(x1, y2, 50); // circle goes from top to bottom 
+ 
+  if(y>height&&y1>height&&y2>height){
+    background(255, 89, 0)
+  }
+   fill(204, 0, 255)
+    //ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
+    ellipse(middleFingerTipX, middleFingerTipY, 80, 80);
+    ellipse(ringFingerTipX, ringFingerTipY, 70, 70);
+    ellipse(pinkyFingerTipX, pinkyFingerTipY, 60, 60);
+   
    chameleonHandPuppet(hand)
     
   // drawPoints(hand)

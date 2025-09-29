@@ -25,7 +25,7 @@
 const  CaptureWidth = 1280;
 const  CaptureHeight = 720;
 
-// const  CaptureWidth = 640;
+//const  CaptureWidth = 640;
 // const  CaptureHeight = 360;
 
 
@@ -33,7 +33,7 @@ const  CaptureHeight = 720;
 
 
 // const  CaptureWidth = 1024;
-// const  CaptureHeight = 768;
+ //const  CaptureHeight = 768;
 
 
 
