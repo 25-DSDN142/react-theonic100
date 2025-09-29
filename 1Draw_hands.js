@@ -1,8 +1,16 @@
 // ----=  HANDS  =----
 /* load images here */
-function prepareInteraction() {
-  //bgImage = loadImage('/images/background.png');
-}
+   let planeImage;
+   let snake;
+   let apple;
+  function prepareInteraction(){
+  planeImage = loadImage('/images/plane.png');
+  snake=loadImage('/images/snake.jpg');
+  apple=loadimage('/images/apple.webp');
+   }
+   
+ 
+
 
 function drawInteraction(faces, hands) {
   // hands part
@@ -35,44 +43,49 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
     /*
     Start drawing on the hands here
     */
-   background(0,0,0)
-  planeImage = loadImage('/images/plane.png');
+   //background(0,0,0)
+image(snake,0,0,1280,960)
 
-noStroke()
-  //  ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
-  //    fill(204, 0, 255,90);
-  //   ellipse(indexFingerTipX, indexFingerTipY, 50, 50);
-  //    fill(204, 0, 255,80);
-  //    ellipse(indexFingerTipX, indexFingerTipY, 60, 60);
-  //     fill(204, 0, 255,70);
-   // ellipse(thumbTipX, thumbTipY, 30, 30);
+    
 
-  
-    fill(204, 0, 255)
-    //ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
-    ellipse(middleFingerTipX, middleFingerTipY, 80, 80);
-    ellipse(ringFingerTipX, ringFingerTipY, 70, 70);
-    ellipse(pinkyFingerTipX, pinkyFingerTipY, 60, 60);
-   
    //Map for falling images
    fill(255, 196, 0)
-  let y = map(frameCount, 0, 300, 0, height);
-  circle(90, y, 50); // circle goes from top to bottom
- 
-    let y1 = map(frameCount,300, 500, 0, height);
+  
+   let y = map(frameCount, 0, 300, 0, height);
+  //circle(90, y, 50); // circle goes from top to bottom
+  image(planeImage,100,y);
+    
+  let y1 = map(frameCount,300, 500, 0, height);
+  circle(500, y1, 50); // circle goes from top to bottom   
 
-circle(500, y1, 50); // circle goes from top to bottom   
-
-      let x1 = map(frameCount,300, 800, 0, height);
+    let x = map(frameCount,300, 800, 0, height);
     let y2= map(frameCount,600, 900, 0, height);
 
-  circle(x1, y2, 50); // circle goes from top to bottom 
+  circle(x, y2, 50); // circle goes from top to bottom 
  
+  //change background if statement 
   if(y>height&&y1>height&&y2>height){
     background(255, 89, 0)
   }
-   fill(204, 0, 255)
-    //ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
+
+     let x1 = map(frameCount,900, 1200, 0, height);
+    let y3= map(frameCount,900, 1200, 0, height);
+
+  circle(x1, y3, 50); // circle goes from top to bottom 
+
+     let x2 = map(frameCount,1300, 1500, 800, height);
+    let y4= map(frameCount,1300, 1500, 200, height);
+
+  circle(x2, y4, 50); // circle goes from top to bottom 
+   
+  if(y3>height&&y4>height){
+    background(235, 58, 52)
+  }
+  
+  
+  //snake tail circles
+  fill(204, 0, 255)
+  
     ellipse(middleFingerTipX, middleFingerTipY, 80, 80);
     ellipse(ringFingerTipX, ringFingerTipY, 70, 70);
     ellipse(pinkyFingerTipX, pinkyFingerTipY, 60, 60);
@@ -153,15 +166,15 @@ function chameleonHandPuppet(hand) {
   let indexFingerTipX = hand.index_finger_tip.x;
   let indexFingerTipY = hand.index_finger_tip.y;
   
-    noStroke()
-     ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
-     fill(204, 0, 255,90);
-    ellipse(indexFingerTipX, indexFingerTipY, 50, 50);
-     fill(204, 0, 255,80);
-     ellipse(indexFingerTipX, indexFingerTipY, 60, 60);
-      fill(204, 0, 255,70);
-      fill(0,0,0)
-   circle(indexFingerTipX, indexFingerTipY, 20);
+  //   noStroke()
+  //    ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
+  //    fill(204, 0, 255,90);
+  //   ellipse(indexFingerTipX, indexFingerTipY, 50, 50);
+  //    fill(204, 0, 255,80);
+  //    ellipse(indexFingerTipX, indexFingerTipY, 60, 60);
+  //     fill(204, 0, 255,70);
+  //     fill(0,0,0)
+  //  circle(indexFingerTipX, indexFingerTipY, 20);
 
 }
 
