@@ -6,7 +6,7 @@
   function prepareInteraction(){
   planeImage = loadImage('/images/plane.png');
   snake=loadImage('/images/snake.jpg');
-  apple=loadimage('/images/apple.webp');
+  apple=loadImage('/images/apple.png');
    }
    
  
@@ -44,7 +44,15 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
     Start drawing on the hands here
     */
    //background(0,0,0)
+   noStroke()
 image(snake,0,0,1280,960)
+  // // Styling for the text
+  // fill(0); // Black text color
+  // textSize(32); 
+
+  // // Display the text "Score: " concatenated with the score variable
+  // text("Score: " + score, 10, 40); // (x-coordinate, y-coordinate)
+
 
     
 
@@ -53,7 +61,7 @@ image(snake,0,0,1280,960)
   
    let y = map(frameCount, 0, 300, 0, height);
   //circle(90, y, 50); // circle goes from top to bottom
-  image(planeImage,100,y);
+  image(apple,100,y,100,100);
     
   let y1 = map(frameCount,300, 500, 0, height);
   circle(500, y1, 50); // circle goes from top to bottom   
@@ -144,6 +152,7 @@ function pinchCircle(hand) { // adapted from https://editor.p5js.org/ml5/sketche
 }
 
 function chameleonHandPuppet(hand) {
+ // noStroke()
   // Find the index finger tip and thumb tip
   // let finger = hand.index_finger_tip;
 
