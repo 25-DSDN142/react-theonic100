@@ -45,11 +45,10 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
     */
    //background(0,0,0)
    noStroke()
-//image(snake,0,0,1280,960)
+image(snake,0,0,1280,960)
   
 
-    
-
+//gpt end
    //Map for falling images
    fill(255, 196, 0)
   
@@ -168,7 +167,7 @@ function chameleonHandPuppet(hand) {
 
   let indexFingerTipX = hand.index_finger_tip.x;
   let indexFingerTipY = hand.index_finger_tip.y;
-  
+
   //   noStroke()
   //    ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
   //    fill(204, 0, 255,90);
