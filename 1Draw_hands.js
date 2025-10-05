@@ -47,7 +47,7 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
     */
    //background(0,0,0)
    noStroke()
-//image(snake,0,0,1280,960)
+image(snake,0,0,1280,960)
   
    //Map for falling images
    fill(255, 196, 0)
@@ -103,33 +103,39 @@ rect(550, 18, 180, 60, 10); // x, y, w, h, rounded corners (optional)
   textSize(32);
   text("Score: " + score, 640, 50);
  
+// ---- Check if circle hits bottom ----
+if (y > height) {
+  score+=1;  // add 1 point to the score
+  y = 0;    // reset circle to top
+}
 
 
-  // --- Collision detection for each falling circle ---
-  //checkCollision(500, y1, 50);
-  //checkCollision(x, y2, 50);
-  //checkCollision(x1, y3, 50);
-  //checkCollision(x2, y4, 50);
-//}
+
+ // --- Collision detection for each falling circle ---
+  checkCollision(500, y1, 50);
+  checkCollision(x, y2, 50);
+  checkCollision(x1, y3, 50);
+  checkCollision(x2, y4, 50);
+}
 
 
-// // helper function to check collision
-// function checkCollision(cx, cy, d) {
-//   // cx, cy = circle center, d = diameter
-//   let r = d / 2;
+// helper function to check collision
+function checkCollision(cx, cy, d) {
+  // cx, cy = circle center, d = diameter
+  let r = d / 2;
 
-//   // puppet position (use your green circle puppet)
-//   let finger = hand.middle_finger_tip;
-//   let thumb = hand.thumb_tip;
-//   let puppetX = (finger.x + thumb.x) / 2;
-//   let puppetY = (finger.y + thumb.y) / 2;
-//   let puppetSize = dist(finger.x, finger.y, thumb.x, thumb.y);
-//   let puppetR = puppetSize / 2;
+  // puppet position (use your green circle puppet)
+  let finger = hand.middle_finger_tip;
+  let thumb = hand.thumb_tip;
+  let puppetX = (finger.x + thumb.x) / 2;
+  let puppetY = (finger.y + thumb.y) / 2;
+  let puppetSize = dist(finger.x, finger.y, thumb.x, thumb.y);
+  let puppetR = puppetSize / 2;
 
-//   // distance between falling circle and puppet
-//   if (dist(cx, cy, puppetX, puppetY) < r + puppetR) {
-//     score++;
-//  }
+  // distance between falling circle and puppet
+  if (dist(cx, cy, puppetX, puppetY) < r + puppetR) {
+    score++;
+ }
     
   // drawPoints(hand)
 
