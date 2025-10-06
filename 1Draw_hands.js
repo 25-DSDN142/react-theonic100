@@ -33,10 +33,10 @@ function drawInteraction(faces, hands) {
     if (showKeypoints) {
       drawConnections(hand)
     }
-      image(snake, 0, 0, 1280, 960);
+   
 
 
-  // }
+
 
     // This is how to load in the x and y of a point on the hand.
 let thumbTipX = hand.thumb_tip.x;
@@ -59,55 +59,24 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
     /*
     Start drawing on the hands here
     */
-   //background(0,0,0)
+   
    noStroke()
-image(snake,0,0,1280,960)
-
-
-  
-   //Map for falling images
-  //  fill(255, 196, 0)
-  //  let circle1X = random(width);
-  //    let circle1Y = map(frameCount, 0, 300, 0, height);
-  //  circle(60,circle1Y,50)
-  
+if(score<5){
+   image(snake,0,0,1280,960)
+}
 
      fill(255, 196, 0);
   circle(circle1X, circle1Y, 50);
-
+// this section here was assisted by ai 
   // move the circle down
   circle1Y += circle1Speed;
 
+  // if circle point Y is below the height of the screen reset it and bring it to the top at a random point but starting at Y 0
   if (circle1Y > height) {
     circle1Y = 0;
     circle1X = random(width);
   }
-  //  let y = map(frameCount, 0, 300, 0, height);
-  // circle(500, y, 50); // circle goes from top to bottom
 
-    
-  // //let y1 = map(frameCount,300, 500, 0, height);
-  // //circle(500, y, 50); // circle goes from top to bottom   
-
-  //   let x = map(frameCount,300, 800, 0, height);
-  //   let y2= map(frameCount,600, 900, 0, height);
-
-  // circle(x, y2, 50); // circle goes from top to bottom 
-
-
-  //    let x1 = map(frameCount,900, 1200, 0, height);
-  //   let y3= map(frameCount,900, 1200, 0, height);
-
-  // circle(x1, y3, 50); // circle goes from top to bottom 
-
-  //    let x2 = map(frameCount,1300, 1500, 800, height);
-  //   let y4= map(frameCount,1300, 1500, 200, height);
-
-  // circle(x2, y4, 50); // circle goes from top to bottom 
-   
-  // if(y3>height&&y4>height){
-  //   background(235, 58, 52)
-  // }
 
   
   
@@ -154,12 +123,13 @@ image(snake,0,0,1280,960)
 
 ///////////////////////////
 // --- Collision detection ---
+// detect handcenter x,y and circlex,y and if the distance is less than 50 add 1 to the score and start the loop again witht the coin
   let d = dist(handCenterX, handCenterY, circle1X, circle1Y);
   if (d < 50) { // 50 = radius of circle
     score += 1;
     circle1Y = 0;
     circle1X = random(width);
-    console.log("Score: " + score);
+    //console.log("Score: " + score);
   }
 
   // --- Scoreboard ---
