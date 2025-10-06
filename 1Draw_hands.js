@@ -3,7 +3,7 @@
    let planeImage;
    let snake;
    let apple;
-   let score=0
+  let score=0
   function prepareInteraction(){
   planeImage = loadImage('/images/plane.png');
   snake=loadImage('/images/snake.jpg');
@@ -65,9 +65,9 @@ image(snake,0,0,1280,960)
   circle(x, y2, 50); // circle goes from top to bottom 
  
   //change background if statement 
-  if(y>height&&y1>height&&y2>height){
-    background(255, 89, 0)
-  }
+  // if(score=500){
+  //   background(255, 89, 0)
+  // }
 
      let x1 = map(frameCount,900, 1200, 0, height);
     let y3= map(frameCount,900, 1200, 0, height);
@@ -82,6 +82,7 @@ image(snake,0,0,1280,960)
   if(y3>height&&y4>height){
     background(235, 58, 52)
   }
+
   
   
   //snake tail circles
@@ -106,37 +107,9 @@ rect(550, 18, 180, 60, 10); // x, y, w, h, rounded corners (optional)
 // ---- Check if circle hits bottom ----
 if (y > height) {
   score+=1;  // add 1 point to the score
-  y = 0;    // reset circle to top
+  circley = 0;    // reset circle to top
 }
 
-
-
- // --- Collision detection for each falling circle ---
-  checkCollision(500, y1, 50);
-  checkCollision(x, y2, 50);
-  checkCollision(x1, y3, 50);
-  checkCollision(x2, y4, 50);
-}
-
-
-// helper function to check collision
-function checkCollision(cx, cy, d) {
-  // cx, cy = circle center, d = diameter
-  let r = d / 2;
-
-  // puppet position (use your green circle puppet)
-  let finger = hand.middle_finger_tip;
-  let thumb = hand.thumb_tip;
-  let puppetX = (finger.x + thumb.x) / 2;
-  let puppetY = (finger.y + thumb.y) / 2;
-  let puppetSize = dist(finger.x, finger.y, thumb.x, thumb.y);
-  let puppetR = puppetSize / 2;
-
-  // distance between falling circle and puppet
-  if (dist(cx, cy, puppetX, puppetY) < r + puppetR) {
-    score++;
- }
-    
   // drawPoints(hand)
 
   
