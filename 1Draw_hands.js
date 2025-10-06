@@ -1,17 +1,27 @@
 // ----=  HANDS  =----
 /* load images here */
-   let planeImage;
    let snake;
-   let apple;
-  let score=0
-  function prepareInteraction(){
-  planeImage = loadImage('/images/plane.png');
+   let score=0
+  let handCenterX;
+  let handCenterY;
+  let circle1X;
+let circle1Y = 0;
+let circle1Speed = 3;
+ 
+
+//let circleSpeed=5;
+
+function prepareInteraction(){
   snake=loadImage('/images/snake.jpg');
-  apple=loadImage('/images/apple.png');
+  // Start the falling circle at a random horizontal position
+  circle1X = random(width);
+ 
+
+ 
+
   
    }
-   
- 
+
 
 
 function drawInteraction(faces, hands) {
@@ -23,6 +33,10 @@ function drawInteraction(faces, hands) {
     if (showKeypoints) {
       drawConnections(hand)
     }
+      image(snake, 0, 0, 1280, 960);
+
+
+  // }
 
     // This is how to load in the x and y of a point on the hand.
 let thumbTipX = hand.thumb_tip.x;
@@ -48,40 +62,52 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
    //background(0,0,0)
    noStroke()
 image(snake,0,0,1280,960)
+
+
   
    //Map for falling images
-   fill(255, 196, 0)
+  //  fill(255, 196, 0)
+  //  let circle1X = random(width);
+  //    let circle1Y = map(frameCount, 0, 300, 0, height);
+  //  circle(60,circle1Y,50)
   
-   let y = map(frameCount, 0, 300, 0, height);
-  circle(90, y, 50); // circle goes from top to bottom
-  //image(apple,400,y,100,100);//falling apple 
-    
-  let y1 = map(frameCount,300, 500, 0, height);
-  circle(500, y1, 50); // circle goes from top to bottom   
 
-    let x = map(frameCount,300, 800, 0, height);
-    let y2= map(frameCount,600, 900, 0, height);
+     fill(255, 196, 0);
+  circle(circle1X, circle1Y, 50);
 
-  circle(x, y2, 50); // circle goes from top to bottom 
- 
-  //change background if statement 
-  // if(score=500){
-  //   background(255, 89, 0)
-  // }
+  // move the circle down
+  circle1Y += circle1Speed;
 
-     let x1 = map(frameCount,900, 1200, 0, height);
-    let y3= map(frameCount,900, 1200, 0, height);
-
-  circle(x1, y3, 50); // circle goes from top to bottom 
-
-     let x2 = map(frameCount,1300, 1500, 800, height);
-    let y4= map(frameCount,1300, 1500, 200, height);
-
-  circle(x2, y4, 50); // circle goes from top to bottom 
-   
-  if(y3>height&&y4>height){
-    background(235, 58, 52)
+  if (circle1Y > height) {
+    circle1Y = 0;
+    circle1X = random(width);
   }
+  //  let y = map(frameCount, 0, 300, 0, height);
+  // circle(500, y, 50); // circle goes from top to bottom
+
+    
+  // //let y1 = map(frameCount,300, 500, 0, height);
+  // //circle(500, y, 50); // circle goes from top to bottom   
+
+  //   let x = map(frameCount,300, 800, 0, height);
+  //   let y2= map(frameCount,600, 900, 0, height);
+
+  // circle(x, y2, 50); // circle goes from top to bottom 
+
+
+  //    let x1 = map(frameCount,900, 1200, 0, height);
+  //   let y3= map(frameCount,900, 1200, 0, height);
+
+  // circle(x1, y3, 50); // circle goes from top to bottom 
+
+  //    let x2 = map(frameCount,1300, 1500, 800, height);
+  //   let y4= map(frameCount,1300, 1500, 200, height);
+
+  // circle(x2, y4, 50); // circle goes from top to bottom 
+   
+  // if(y3>height&&y4>height){
+  //   background(235, 58, 52)
+  // }
 
   
   
@@ -91,24 +117,66 @@ image(snake,0,0,1280,960)
     ellipse(middleFingerTipX, middleFingerTipY, 80, 80);
     ellipse(ringFingerTipX, ringFingerTipY, 70, 70);
     ellipse(pinkyFingerTipX, pinkyFingerTipY, 60, 60);
-   
-   chameleonHandPuppet(hand)
-   
-   // ---- SCOREBOARD ----
- // rect(550,18,80,30)
- strokeWeight(0)
-fill(52, 180, 235);                 // white background for the box
-rect(550, 18, 180, 60, 10); // x, y, w, h, rounded corners (optional) 
+    
+    
+    
+    chameleonHandPuppet(hand)
+     function chameleonHandPuppet(hand) {
+ // noStroke()
+  // Find the index finger tip and thumb tip
+  // let finger = hand.index_finger_tip;
 
-   fill(0);
+  let finger = hand.middle_finger_tip; // this finger now contains the x and y infomation! you can access it by using finger.x 
+  let thumb = hand.thumb_tip;
+
+  // Draw circles at finger positions
+  let centerX = (finger.x + thumb.x) / 2;
+  let centerY = (finger.y + thumb.y) / 2;
+  handCenterX=centerX
+  handCenterY=centerY
+  // Calculate the pinch "distance" between finger and thumb
+  let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
+
+  // This circle's size is controlled by a "pinch" gesture
+  fill(0, 255, 0, 127.5);
+  stroke(0);
+  strokeWeight(2);
+  circle(centerX, centerY, pinch);
+  
+
+  let indexFingerTipX = hand.index_finger_tip.x;
+  let indexFingerTipY = hand.index_finger_tip.y;
+      }
+
+      
+       ///////////////////////////////////
+
+
+///////////////////////////
+// --- Collision detection ---
+  let d = dist(handCenterX, handCenterY, circle1X, circle1Y);
+  if (d < 50) { // 50 = radius of circle
+    score += 1;
+    circle1Y = 0;
+    circle1X = random(width);
+    console.log("Score: " + score);
+  }
+
+  // --- Scoreboard ---
+  fill(52, 180, 235);
+  noStroke();
+  rect(550, 18, 180, 60, 10);
+
+  fill(0);
   textSize(32);
-  text("Score: " + score, 640, 50);
- 
-// ---- Check if circle hits bottom ----
-if (y > height) {
-  score+=1;  // add 1 point to the score
-  circley = 0;    // reset circle to top
-}
+  textAlign(CENTER, CENTER);
+  text("Score: " + score, 640, 48);
+  
+
+
+
+
+  
 
   // drawPoints(hand)
 
@@ -161,41 +229,33 @@ function pinchCircle(hand) { // adapted from https://editor.p5js.org/ml5/sketche
 
 }
 
-function chameleonHandPuppet(hand) {
- // noStroke()
-  // Find the index finger tip and thumb tip
-  // let finger = hand.index_finger_tip;
+// function chameleonHandPuppet(hand) {
+//  // noStroke()
+//   // Find the index finger tip and thumb tip
+//   // let finger = hand.index_finger_tip;
 
-  let finger = hand.middle_finger_tip; // this finger now contains the x and y infomation! you can access it by using finger.x 
-  let thumb = hand.thumb_tip;
+//   let finger = hand.middle_finger_tip; // this finger now contains the x and y infomation! you can access it by using finger.x 
+//   let thumb = hand.thumb_tip;
 
-  // Draw circles at finger positions
-  let centerX = (finger.x + thumb.x) / 2;
-  let centerY = (finger.y + thumb.y) / 2;
-  // Calculate the pinch "distance" between finger and thumb
-  let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
+//   // Draw circles at finger positions
+//   let centerX = (finger.x + thumb.x) / 2;
+//   let centerY = (finger.y + thumb.y) / 2;
+//   // Calculate the pinch "distance" between finger and thumb
+//   let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
 
-  // This circle's size is controlled by a "pinch" gesture
-  fill(0, 255, 0, 127.5);
-  stroke(0);
-  strokeWeight(2);
-  circle(centerX, centerY, pinch);
+//   // This circle's size is controlled by a "pinch" gesture
+//   fill(0, 255, 0, 127.5);
+//   stroke(0);
+//   strokeWeight(2);
+//   circle(centerX, centerY, pinch);
   
 
-  let indexFingerTipX = hand.index_finger_tip.x;
-  let indexFingerTipY = hand.index_finger_tip.y;
+//   let indexFingerTipX = hand.index_finger_tip.x;
+//   let indexFingerTipY = hand.index_finger_tip.y;
 
-  //   noStroke()
-  //    ellipse(indexFingerTipX, indexFingerTipY, 40, 40);
-  //    fill(204, 0, 255,90);
-  //   ellipse(indexFingerTipX, indexFingerTipY, 50, 50);
-  //    fill(204, 0, 255,80);
-  //    ellipse(indexFingerTipX, indexFingerTipY, 60, 60);
-  //     fill(204, 0, 255,70);
-  //     fill(0,0,0)
-  //  circle(indexFingerTipX, indexFingerTipY, 20);
 
-}
+
+//}
 
 function drawConnections(hand) {
   // Draw the skeletal connections
