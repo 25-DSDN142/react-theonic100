@@ -7,7 +7,10 @@
   let circle1X;
 let circle1Y = 0;
 let circle1Speed = 3;
- 
+let circle2X=0;
+let circle2Y;
+ let circle2Speed=3;
+ let pinch;
 
 //let circleSpeed=5;
 
@@ -15,7 +18,7 @@ function prepareInteraction(){
   snake=loadImage('/images/snake.jpg');
   // Start the falling circle at a random horizontal position
   circle1X = random(width);
- 
+ circle2Y=random(height)
 
  
 
@@ -64,7 +67,7 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
 if(score<5){
    image(snake,0,0,1280,960)
 }
-
+// yellow circle top to bottom
      fill(255, 196, 0);
   circle(circle1X, circle1Y, 50);
 // this section here was assisted by ai 
@@ -77,6 +80,17 @@ if(score<5){
     circle1X = random(width);
   }
 
+// red circle left to right
+
+fill(255, 22, 5)
+  circle(circle2X,circle2Y,50)
+  circle2X+=circle2Speed
+
+  if(circle2X>width){
+    circle2X=0
+    circle2Y=random(height)
+  }
+
 
   
   
@@ -85,10 +99,8 @@ if(score<5){
   
     ellipse(middleFingerTipX, middleFingerTipY, 80, 80);
     ellipse(ringFingerTipX, ringFingerTipY, 70, 70);
-    ellipse(pinkyFingerTipX, pinkyFingerTipY, 60, 60);
-    
-    
-    
+    ellipse(pinkyFingerTipX, pinkyFingerTipY, 60, 60);  
+    /////////////////////////////////////////////////////////
     chameleonHandPuppet(hand)
      function chameleonHandPuppet(hand) {
  // noStroke()
@@ -124,11 +136,20 @@ if(score<5){
 ///////////////////////////
 // --- Collision detection ---
 // detect handcenter x,y and circlex,y and if the distance is less than 50 add 1 to the score and start the loop again witht the coin
-  let d = dist(handCenterX, handCenterY, circle1X, circle1Y);
-  if (d < 50) { // 50 = radius of circle
+  let d1 = dist(handCenterX, handCenterY, circle1X, circle1Y);
+  if (d1 < 50) { // 50 = radius of circle
     score += 1;
     circle1Y = 0;
     circle1X = random(width);
+    //console.log("Score: " + score);
+  }
+  //let d2 = dist(handCenterX, handCenterY, circle2X, circle2Y);
+ 
+    let d2 = dist(handCenterX, handCenterY, circle2X, circle2Y);
+  if (d2 < 50) { // 50 = radius of circle
+    score += 1;
+    circle2X = 0;
+    circle2Y = random(height);
     //console.log("Score: " + score);
   }
 
