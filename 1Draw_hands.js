@@ -1,6 +1,7 @@
 // ----=  HANDS  =----
 /* load images here */
    let snake;
+   let pacman
    let score=0
   let handCenterX;
   let handCenterY;
@@ -16,6 +17,7 @@ let circle2Y;
 
 function prepareInteraction(){
   snake=loadImage('/images/snake.jpg');
+  pacman=loadImage('/images/pacman.png')
   // Start the falling circle at a random horizontal position
   circle1X = random(width);
  circle2Y=random(height)
@@ -67,6 +69,10 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
 if(score<5){
    image(snake,0,0,1280,960)
 }
+if(score>=5){
+  image(pacman,0,0,1280,920)
+}
+  
 // yellow circle top to bottom
      fill(255, 196, 0);
   circle(circle1X, circle1Y, 50);
@@ -93,7 +99,6 @@ fill(255, 22, 5)
 
 
   
-  
   //snake tail circles
   fill(204, 0, 255)
   
@@ -103,7 +108,7 @@ fill(255, 22, 5)
     /////////////////////////////////////////////////////////
     chameleonHandPuppet(hand)
      function chameleonHandPuppet(hand) {
- // noStroke()
+  noStroke()
   // Find the index finger tip and thumb tip
   // let finger = hand.index_finger_tip;
 
@@ -119,9 +124,10 @@ fill(255, 22, 5)
   let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
 
   // This circle's size is controlled by a "pinch" gesture
-  fill(0, 255, 0, 127.5);
+ // fill(0, 255, 0);
+ fill(32, 3, 252,150);
   stroke(0);
-  strokeWeight(2);
+  strokeWeight(0);
   circle(centerX, centerY, pinch);
   
 
@@ -246,7 +252,7 @@ function pinchCircle(hand) { // adapted from https://editor.p5js.org/ml5/sketche
 
 
 
-//}
+// }
 
 function drawConnections(hand) {
   // Draw the skeletal connections
