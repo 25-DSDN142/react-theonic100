@@ -6,12 +6,13 @@
   let handCenterX;
   let handCenterY;
   let circle1X;
-let circle1Y = 40;
+let circle1Y = 0;
 let circle1Speed = 3;
 let circle2X=0;
 let circle2Y;
  let circle2Speed=4;
  let pinch;
+
 
 //let circleSpeed=5;
 
@@ -65,13 +66,13 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
     Start drawing on the hands here
     */
    
-  // noStroke()
-//if(score<5){
-  // image(snake,0,0,1280,960)
-//}
-//if(score>=5){
-  //image(pacman,0,0,1280,920)
-//}
+  noStroke()
+if(score<5){
+  image(snake,0,0,1280,960)
+}
+if(score>=5){
+  image(pacman,0,0,1280,920)
+}
   
 // yellow circle top to bottom
      fill(255, 196, 0);
@@ -143,27 +144,19 @@ fill(255, 22, 5)
       
        ///////////////////////////////////
 
-
-///////////////////////////
 // --- Collision detection ---
-// detect handcenter x,y and circlex,y and if the distance is less than 50 add 1 to the score and start the loop again witht the coin
   let d1 = dist(handCenterX, handCenterY, circle1X, circle1Y);
   if (d1 < 100) { // 50 = radius of circle
     score += 1;
     circle1Y = 0;
     circle1X = random(width);
-    //console.log("Score: " + score);
   }
-  //let d2 = dist(handCenterX, handCenterY, circle2X, circle2Y);
- 
     let d2 = dist(handCenterX, handCenterY, circle2X, circle2Y);
   if (d2 < 100) { // 50 = radius of circle
     score += 1;
     circle2X = 0;
     circle2Y = random(height);
-    //console.log("Score: " + score);
   }
-
   // --- Scoreboard ---
   fill(52, 180, 235);
   noStroke();
@@ -173,6 +166,15 @@ fill(255, 22, 5)
   textSize(32);
   textAlign(CENTER, CENTER);
   text("Score: " + score, 640, 48);
+  
+
+
+
+
+
+
+
+
   
 
 
