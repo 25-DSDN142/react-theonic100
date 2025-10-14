@@ -19,8 +19,8 @@ let circle2Y;
 function prepareInteraction(){
   snake=loadImage('/images/snake.jpg');
   pacman=loadImage('/images/pacman.png');
-  winner=loadimage('/images/winner.jpg');
-  // Start the falling circle at a random horizontal position
+ 
+ // Start the falling circle at a random horizontal position
   circle1X = random(width);
  circle2Y=random(height)
 
@@ -66,18 +66,17 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
     /*
     Start drawing on the hands here
     */
-   
+
   noStroke()
 if(score<5){
   image(snake,0,0,1280,960)
 }
-if(score>=5&&score<15){
+if(score>=5){
   image(pacman,0,0,1280,920)
 }
-if(score==15){
-  image(winner,0,0,1280,920)
-}
-  
+
+    
+
 // yellow circle top to bottom
      fill(255, 196, 0);
   circle(circle1X, circle1Y, 50);
@@ -102,7 +101,9 @@ fill(255, 22, 5)
     circle2Y=random(height)
   }
 }
-
+// if(score>15){
+//   image(winner,0,0,1280,920)
+// }
   
   //snake tail circles
   fill(204, 0, 255)
