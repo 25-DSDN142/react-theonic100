@@ -1,7 +1,8 @@
 // ----=  HANDS  =----
 /* load images here */
    let snake;
-   let pacman
+   let pacman;
+   let winner;
    let score=0
   let handCenterX;
   let handCenterY;
@@ -19,7 +20,7 @@ let circle2Y;
 function prepareInteraction(){
   snake=loadImage('/images/snake.jpg');
   pacman=loadImage('/images/pacman.png');
- 
+ winner=loadImage('/images/winner.png');
  // Start the falling circle at a random horizontal position
   circle1X = random(width);
  circle2Y=random(height)
@@ -74,11 +75,14 @@ if(score<5){
 if(score>=5){
   image(pacman,0,0,1280,920)
 }
-
+if(score==15){
+  image(winner,0,0,1280,920)
+}
     
 
 // yellow circle top to bottom
-     fill(255, 196, 0);
+ if (score < 15){    
+fill(255, 196, 0);
   circle(circle1X, circle1Y, 50);
 // this section here was assisted by ai 
   // move the circle down
@@ -89,9 +93,9 @@ if(score>=5){
     circle1Y = 0;
     circle1X = random(width);
   }
-
+ }
 // red circle left to right
-if (score>=5){
+if (score>=5&&score<15){
 fill(255, 22, 5)
   circle(circle2X,circle2Y,50)
   circle2X+=circle2Speed
