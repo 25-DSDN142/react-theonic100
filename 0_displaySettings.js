@@ -38,9 +38,9 @@ const  CaptureWidth = 1280;
 
 
 // program Mode
-const webCam = true; // set to false to use video
+const webCam = false; // set to false to use video
 const videoFile = "hands1.mov.mp4" // update this to match the video file you want to load
-const flipVideo =false; // changes from mirror mode to standard video mode
+const flipVideo =true; // changes from mirror mode to standard video mode
 
 
 // global variables 
