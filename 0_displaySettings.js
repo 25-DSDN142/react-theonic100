@@ -32,15 +32,15 @@ const  CaptureHeight = 720;
 // If using Webcam use these dimentions
 
 
-// const  CaptureWidth = 1024;
-//  const  CaptureHeight = 786;
+// const  CaptureWidth = 1280;
+//  const  CaptureHeight = 960;
 
 
 
 // program Mode
-const webCam = false; // set to false to use video
+const webCam = true; // set to false to use video
 const videoFile = "hands1.mov" // update this to match the video file you want to load
-const flipVideo = true; // changes from mirror mode to standard video mode
+const flipVideo = false; // changes from mirror mode to standard video mode
 
 
 // global variables 
