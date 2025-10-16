@@ -72,11 +72,11 @@ let pinkyFingerTipY = hand.pinky_finger_tip.y;
 if(score<5){
   image(snake,0,0,1280,960)
 }
-if(score>=5){
-  image(pacman,0,0,1280,920)
+if(score>=5&&score<15){
+  image(pacman,0,0,1280,960)
 }
-if(score==15){
-  image(winner,0,0,1280,920)
+if(score>=15){
+  image(winner,0,0,1280,960)
 }
     
 
@@ -105,9 +105,7 @@ fill(255, 22, 5)
     circle2Y=random(height)
   }
 }
-// if(score>15){
-//   image(winner,0,0,1280,920)
-// }
+
   
   //snake tail circles
   fill(204, 0, 255)
